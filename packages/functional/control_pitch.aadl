@@ -1,0 +1,30 @@
+package functional::control_pitch
+public
+
+with functional::generic;
+with functional::ErrorModelLibrary;
+
+with ARP4761, EMV2;
+
+system pitch_controller extends functional::generic::genericFunction
+
+	annex EMV2{** 
+		properties
+		EMV2::severity => ARP4761::Catastrophic applies to failed;
+		ARP4761::hazards => 
+			([
+				description => "Lose of pitch control function";
+				environment => "All";
+				failure => "Pitch control - loss of control";
+				failureEffect => "Loss of pitch control";
+				phases => ("Takeoff, Inflight");
+				comment => "Loss of pitch control leads to loss of aircraft control";
+			])
+			applies to failed;
+	**};
+end pitch_controller;
+
+system implementation pitch_controller.i
+end pitch_controller.i;
+
+end functional::control_pitch;

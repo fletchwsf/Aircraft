@@ -1,0 +1,30 @@
+package functional::provide_thrust
+public
+	
+with functional::generic;
+with functional::ErrorModelLibrary;
+
+with ARP4761, EMV2;
+
+system provide_thrust extends functional::generic::genericFunction
+	annex EMV2{** 
+		properties
+		EMV2::severity => ARP4761::Catastrophic applies to failed;
+		ARP4761::hazards => 
+			([
+				description => "Provide thrust function failure - Loss of thrust";
+				environment => "All";
+				failure => "Thurst management - loss of thrust";
+				failureEffect => "Loss of forward thrust";
+				phases => ("All");
+				comment => "Loss of thrust, failure to maintain the fightpath, loss of control";
+			])
+			applies to failed;
+	**};
+	
+end provide_thrust;
+
+system implementation provide_thrust.i
+end provide_thrust.i;
+
+end functional::provide_thrust;

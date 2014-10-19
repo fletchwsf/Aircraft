@@ -1,0 +1,30 @@
+package functional::control_drag_spoilers
+public
+
+with functional::generic;
+with functional::ErrorModelLibrary;
+
+with ARP4761, EMV2;
+
+system spoiler_controller extends functional::generic::genericFunction
+	annex EMV2{** 
+		properties
+			EMV2::severity => ARP4761::Catastrophic applies to failed;
+			ARP4761::hazards => 
+			([
+				description => "Spoiler control function failure - inadvertent deployment";
+				environment => "All";
+				failure => "Spoiler control - inadvertent deployment";
+				failureEffect => "Loss of lift";
+				phases => ("Inflight");
+				comment => "Inadvertent deployment of aircraft spoilers during flight leads to
+								reduction in wing lift with loss of aircraft control";
+			])
+			applies to failed;	
+	**};
+end spoiler_controller;
+
+system implementation spoiler_controller.i
+end spoiler_controller.i;
+
+end functional::control_drag_spoilers;

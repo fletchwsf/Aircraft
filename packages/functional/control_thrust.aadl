@@ -1,0 +1,30 @@
+package functional::control_thrust
+public
+
+with functional::generic;
+with functional::ErrorModelLibrary;
+
+with ARP4761, EMV2;
+
+system thrust_controller extends functional::generic::genericFunction
+	annex EMV2{** 
+		properties
+		EMV2::severity => ARP4761::Catastrophic applies to failed;
+		ARP4761::hazards => 
+			([
+				description => "Thrust control function failure - Loss of thrust control";
+				environment => "All";
+				failure => "Thrust management - loss of thrust control";
+				failureEffect => "Loss of forward thrust";
+				phases => ("All");
+				comment => "Loss of thrust control leads to reduction in speed with loss of control";
+			])
+			applies to failed;
+	**};
+	
+end thrust_controller;
+
+system implementation thrust_controller.i
+end thrust_controller.i;
+
+end functional::control_thrust;

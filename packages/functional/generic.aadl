@@ -1,0 +1,35 @@
+package functional::generic
+public
+
+with functional::ErrorModelLibrary;
+with EMV2;
+
+system genericFunction
+
+	features
+		isFailing : feature;
+
+	annex EMV2 {**
+		use types functional::ErrorModelLibrary;
+		use behavior functional::ErrorModelLibrary::TwoState;
+		error propagations
+				isFailing: out propagation {functionalErrors};
+			flows
+				f1 : error source isFailing {functionalErrors};
+		end propagations;
+		
+		component error behavior
+			events
+				functionalFailure: error event {functionalErrors};
+			transitions
+				t1: Operational -[functionalFailure]-> failed;
+			propagations
+				p1: failed -[]-> isFailing {functionalErrors};
+		end component;
+	**};
+end genericFunction;
+
+system implementation genericFunction.i
+end genericFunction.i;
+
+end functional::generic;

@@ -1,0 +1,55 @@
+-- Aircraft functions 
+
+ 
+package aircraft_functional
+public
+
+with ARP4761;
+with EMV2;
+
+with functional::ErrorModelLibrary;
+
+with functional::control_pitch;
+with functional::control_drag_spoilers;
+with functional::control_thrust;
+
+with functional::provide_thrust;
+
+system aircraft_functional
+	features
+		isFailing : feature;
+
+end aircraft_functional;
+
+system implementation aircraft_functional.model
+	subcomponents
+		sys_stability_pitch : system functional::control_pitch::pitch_controller.i;
+		sys_spoilers: system functional::control_drag_spoilers::spoiler_controller.i;
+		sys_thrust_management : system functional::control_thrust::thrust_controller.i;
+		sys_forward_thrust : system functional::provide_thrust::provide_thrust.i;
+		
+	annex EMV2{**
+		use types functional::ErrorModelLibrary;
+		use behavior functional::ErrorModelLibrary::TwoState;
+		composite error behavior
+		states
+				-- functions required to be operational
+				[sys_stability_pitch.operational and
+					sys_spoilers.operational and
+					sys_thrust_management.operational and 
+					sys_forward_thrust.operational
+				]-> operational;
+				-- functional failures contributing to catastrophic failure conditions
+				[sys_stability_pitch.failed or
+					sys_spoilers.failed or
+					sys_thrust_management.failed or
+					sys_forward_thrust.failed
+				]-> failed;
+		end composite;
+	**};
+
+end aircraft_functional.model;
+
+
+
+end aircraft_functional;

@@ -1,0 +1,56 @@
+package functional::ErrorModelLibrary
+public
+
+with EMV2;
+	
+annex EMV2 {**
+	error types
+		anyFunctionalError : type;
+		-- provided, not provided, 
+		-- wrong timing, wrong order, 
+		-- stopped too soon, applied too long
+		-- too much, too little, too soon, too late
+		
+		-- service errors
+		provided   : type extends anyFunctionalError;
+		notProvided: type extends anyFunctionalError;
+		
+		-- timing errors
+		wrongTiming : type extends anyFunctionalError;
+		wrongOrder  : type extends anyFunctionalError;
+		stoppedTooSoon : type extends anyFunctionalError;
+		appliedTooLong : type extends anyFunctionalError;
+		
+		-- value errors
+		tooMuch		: type extends anyFunctionalError;
+		tooLittle	: type extends anyFunctionalError;
+		
+		functionalErrors : type set {provided, notProvided, wrongTiming, wrongOrder,
+										stoppedTooSoon, appliedTooLong, tooMuch, tooLittle 
+		};
+	end types;
+
+
+	error behavior twoState
+		events
+			errorEvent : error event;
+		states
+			operational : initial state;
+			failed : state;
+	end behavior;	
+	
+--	error behavior aircraftOpPhases
+--		states
+--			taxi	: initial state;
+--			takeoff : state;
+--			climb 	: state;
+--			cruise 	: state;
+--			descent : state;
+--			landing : state;
+--			onGround : state;
+--			inAir    : state;
+--	end behavior;
+	
+**};
+
+end functional::ErrorModelLibrary;

@@ -1,0 +1,17 @@
+CrossReference 		: aadlstring; -- cross reference to an external document
+Description 		: aadlstring; -- description of the hazard (same as hazardtitle)
+Failure 			:aadlstring; -- system deviation resulting in failure effect
+FailureEffect 		: aadlstring; -- description of the effect of a failure (mode)
+Phases 				: list of aadlstring; -- operational phases in which the hazard is relevant
+Environment 		: aadlstring; -- description of operational environment
+FailureCondition 	: aadlstring; -- description of event (series) resulting in unintentional death, etc.(ARP4761)
+Risk 				: aadlstring; -- description of risk. Risk is characterized by 	severity, likelihood, and occurrence probability
+Severity 			: EMV2::SeverityRange; -- actual risk as severity
+Likelihood 			: EMV2::LikelihoodLabels; -- actual risk as likelihood/probability
+Probability			: EMV2::ProbabilityRange; -- probability of a hazard
+TargetSeverity 		: EMV2::SeverityRange; -- acceptable risk as severity
+TargetLikelihood 	: EMV2::LikelihoodLabels; -- acceptable risk as likelihood/prob
+DevelopmentAssuranceLevel : EMV2::DALLabels; -- level of rigor in development assurance (ARP4761)
+VerificationMethod 	: aadlstring; -- verification method to address the hazard
+SafetyReport 		: aadlstring; -- analysis/assessment of hazard
+Comment 			: aadlstring; -- additional information about the hazard

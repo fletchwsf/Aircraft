@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="ASCII"?>
+<instance:SystemInstance xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aadl2="http://aadl.info/AADL/2.0" xmlns:instance="http://aadl.info/AADL/2.0/instance" xmi:id="_hF-JYFZVEeSErbv4WEovMg" name="aircraft_functional_model_Instance" category="system">
+  <featureInstance xmi:id="_hH6DEVZVEeSErbv4WEovMg" name="isFailing" category="abstractFeature" direction="in out">
+    <feature xsi:type="aadl2:AbstractFeature" href="../aircraft_functional.aadl#//@ownedPublicSection/@ownedClassifier.0/@ownedAbstractFeature.0"/>
+  </featureInstance>
+  <componentInstance xmi:id="_hGa1UFZVEeSErbv4WEovMg" name="sys_stability_pitch" category="system">
+    <featureInstance xmi:id="_hHArMFZVEeSErbv4WEovMg" name="isFailing" category="abstractFeature" direction="in out">
+      <feature xsi:type="aadl2:AbstractFeature" href="../packages/functional/generic.aadl#//@ownedPublicSection/@ownedClassifier.0/@ownedAbstractFeature.0"/>
+    </featureInstance>
+    <subcomponent xsi:type="aadl2:SystemSubcomponent" href="../aircraft_functional.aadl#//@ownedPublicSection/@ownedClassifier.1/@ownedSystemSubcomponent.0"/>
+    <index>0</index>
+  </componentInstance>
+  <componentInstance xmi:id="_hHArMVZVEeSErbv4WEovMg" name="sys_spoilers" category="system">
+    <featureInstance xmi:id="_hHTmIFZVEeSErbv4WEovMg" name="isFailing" category="abstractFeature" direction="in out">
+      <feature xsi:type="aadl2:AbstractFeature" href="../packages/functional/generic.aadl#//@ownedPublicSection/@ownedClassifier.0/@ownedAbstractFeature.0"/>
+    </featureInstance>
+    <subcomponent xsi:type="aadl2:SystemSubcomponent" href="../aircraft_functional.aadl#//@ownedPublicSection/@ownedClassifier.1/@ownedSystemSubcomponent.1"/>
+    <index>0</index>
+  </componentInstance>
+  <componentInstance xmi:id="_hHTmIVZVEeSErbv4WEovMg" name="sys_thrust_management" category="system">
+    <featureInstance xmi:id="_hHnIIFZVEeSErbv4WEovMg" name="isFailing" category="abstractFeature" direction="in out">
+      <feature xsi:type="aadl2:AbstractFeature" href="../packages/functional/generic.aadl#//@ownedPublicSection/@ownedClassifier.0/@ownedAbstractFeature.0"/>
+    </featureInstance>
+    <subcomponent xsi:type="aadl2:SystemSubcomponent" href="../aircraft_functional.aadl#//@ownedPublicSection/@ownedClassifier.1/@ownedSystemSubcomponent.2"/>
+    <index>0</index>
+  </componentInstance>
+  <componentInstance xmi:id="_hHnIIVZVEeSErbv4WEovMg" name="sys_forward_thrust" category="system">
+    <featureInstance xmi:id="_hH6DEFZVEeSErbv4WEovMg" name="isFailing" category="abstractFeature" direction="in out">
+      <feature xsi:type="aadl2:AbstractFeature" href="../packages/functional/generic.aadl#//@ownedPublicSection/@ownedClassifier.0/@ownedAbstractFeature.0"/>
+    </featureInstance>
+    <subcomponent xsi:type="aadl2:SystemSubcomponent" href="../aircraft_functional.aadl#//@ownedPublicSection/@ownedClassifier.1/@ownedSystemSubcomponent.3"/>
+    <index>0</index>
+  </componentInstance>
+  <systemOperationMode xmi:id="_hID0EFZVEeSErbv4WEovMg" name="No Modes"/>
+  <componentImplementation xsi:type="aadl2:SystemImplementation" href="../aircraft_functional.aadl#aircraft_functional.aircraft_functional.model"/>
+</instance:SystemInstance>
